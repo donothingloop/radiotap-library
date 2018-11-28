@@ -3,9 +3,13 @@ project(radiotap)
 
 add_definitions("-D_BSD_SOURCE -DRADIOTAP_SUPPORT_OVERRIDES")
 
+add_library(radiotap_static radiotap.c)
 add_library(radiotap SHARED radiotap.c)
 set_target_properties(radiotap PROPERTIES
 		      COMPILE_FLAGS "-Wall -Wextra")
+set_target_properties(radiotap_static PROPERTIES
+		      COMPILE_FLAGS "-Wall -Wextra")
+
 
 install(TARGETS radiotap DESTINATION lib)
 install(FILES radiotap.h radiotap_iter.h DESTINATION include)
